@@ -1,48 +1,258 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
 }
 .App {
   display: flex;
-  flex: 1;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: calc(100vh);
+  width: 100%;
+  height: 100vh;
 }
-h1 {
-  padding: 50px;
+.App h1 {
+  color: var(--white);
+  width: 650px;
+  text-align: left;
+  font-size: 45px;
+  font-weight: 800;
+  letter-spacing: 15px;
+}
+a {
+  cursor: pointer;
+}
+.App__Box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: calc(6 * 80px + 42px);
+  width: 650px;
+  overflow: hidden;
 }
 .App__input {
-  flex: 0.3;
-  min-width: 800px;
-  position: relative;
-  margin-top: 40px;
-  margin-bottom: 100px;
+  width: 100%;
+  height: 80px;
+  padding: 0 30px;
+  background-color: var(--purple);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.App__input form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.App__input form p {
+  width: 35px;
+  height: 35px;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 18px;
+}
+.App__input form input {
+  width: calc(100% - 140px);
+  color: var(--white);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+.App__input form button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 20px;
+  padding: 12px 15px 8px 15px;
+  cursor: pointer;
+}
+.App__input form button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .App__display {
-  flex: 0.7;
-  position: relative;
-  min-width: 800px;
+  width: 100%;
+  background-color: var(--darkPurple);
+  height: calc(100% - 204px);
+}
+.App__display ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.App__display ul li,
+.App_controls {
+  width: 100%;
+  min-height: 80px;
+  height: fit-content;
+  padding: 20px;
+  background-color: var(--purple);
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+.App__display ul li input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
+  appearance: unset;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+}
+.App__display ul li input[type="checkbox"]:checked {
+  appearance: auto;
 }
 .App__display p {
+  width: calc(100% - 150px);
+  line-height: 1.3rem;
+  font-size: 1.2rem;
+  height: fit-content;
+  overflow-wrap: break-word;
+
+  margin: 0 20px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.App__display button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  margin-left: 20px;
+  color: rgb(198, 230, 255);
+  cursor: pointer;
+}
+.App__display button:hover {
+  color: rgb(60, 97, 124);
+}
+.App__display ul .editItem input {
+  width: calc(100% - 90px);
+  color: var(--white);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  line-height: 30px;
+  border-bottom: 2px solid rgb(0, 183, 255);
+}
+.App__display ul .editItem button {
+  background-color: rgb(5, 127, 228);
+  width: 35px;
+  height: 35px;
+}
+.App__display ul .editItem button:nth-child(3) {
+  background-color: rgb(228, 5, 5);
+}
+.App__display ul .editItem button:hover {
+  background-color: rgb(0, 78, 141);
+  color: rgb(255, 255, 255);
+}
+.App__display ul .editItem button:nth-child(3):hover {
+  background-color: rgb(158, 3, 3);
+  color: rgb(255, 255, 255);
+}
+.App_controls {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+.App_controls nav {
+  position: relative;
+}
+.App_controls nav #marker {
   display: inline-block;
-  width: calc(100% - 50px);
-  margin: 0;
-  margin-block-end: 0;
-  margin-block-start: 0;
+  position: absolute;
+  bottom: -5px;
+  height: 3px;
+  border-radius: 10px;
+  background-color: rgb(0, 174, 255);
+  transition: 0.2s ease;
 }
-Button {
-  float: right;
+.App_controls nav a {
+  margin: 0 10px;
+  position: relative;
 }
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
+  .App h1 {
+    width: calc(100% - 50px);
+    margin: 30px;
+  }
+  .App__Box {
+    height: calc(100% - 105px);
+    width: calc(100% - 30px);
+  }
   .App__input {
-    min-width: calc(100% - 20px);
-    margin: 40px;
-    margin-bottom: 100px;
+    position: absolute;
+    width: calc(100% - 30px);
+    bottom: 0;
+    height: 70px;
+    padding: 0 15px;
+  }
+  .App__input form p {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    line-height: 22px;
+    border-radius: 15px;
+  }
+  .App__input form input {
+    width: calc(100% - 120px);
+    font-size: 18px;
+  }
+  .App__input form button {
+    font-size: 18px;
+    padding: 12px 15px 8px 15px;
+    cursor: pointer;
   }
   .App__display {
-    min-width: calc(100% - 20px);
-    max-width: calc(100% - 20px);
+    height: calc(100% - 280px);
+  }
+  .App__display ul li,
+  .App_controls {
+    height: max-content;
+    min-height: 70px;
+    padding: 15px;
+  }
+  .App__display ul li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+  .App__display ul li p {
+    width: calc(100% - 80px);
+    line-height: 25px;
+    overflow: hidden;
+  }
+  .App__display button {
+    font-size: 18px;
+    margin-left: 20px;
+  }
+  .App_controls {
+    position: relative;
+    align-items: flex-start;
+    padding: 20px;
+    height: 100px;
+  }
+  .App_controls nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
   }
 }
